@@ -1,0 +1,25 @@
+﻿<Window x:Class="ModulesTest.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ContentControl prism:RegionManager.RegionName="{Binding Module}" />
+        <StackPanel Grid.Row="1">
+            <Button Command="{Binding ShowModuleCommand}"
+                    CommandParameter="A">
+                Show A
+            </Button>
+            <Button Command="{Binding ShowModuleCommand}"
+                    CommandParameter="B">
+                Show B
+            </Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>
