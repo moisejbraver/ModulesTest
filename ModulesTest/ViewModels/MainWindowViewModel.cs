@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using System.Collections.ObjectModel;
 
 namespace ModulesTest.ViewModels
 {
@@ -12,12 +13,7 @@ namespace ModulesTest.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private string fieldName;
-        public string Module
-        {
-            get { return fieldName; }
-            set { SetProperty(ref fieldName, value); }
-        }
+        public ObservableCollection<string> Tabs { get; } = new ObservableCollection<string>();
 
         private DelegateCommand<string> _showModuleCommand;
         public DelegateCommand<string> ShowModuleCommand =>
@@ -25,12 +21,11 @@ namespace ModulesTest.ViewModels
 
         void ExecuteShowModuleCommand(string module)
         {
-            Module = "Module" + module;
+            Tabs.Add("Module" + module);
         }
 
         public MainWindowViewModel()
         {
-            Module = "ModuleA";
         }
     }
 }

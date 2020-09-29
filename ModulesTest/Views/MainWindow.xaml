@@ -7,17 +7,29 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ContentControl prism:RegionManager.RegionName="{Binding Module}" />
+        <TabControl ItemsSource="{Binding Tabs}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+                
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ContentControl prism:RegionManager.RegionName="{Binding}" />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
         <StackPanel Grid.Row="1">
             <Button Command="{Binding ShowModuleCommand}"
                     CommandParameter="A">
-                Show A
+                Add A
             </Button>
             <Button Command="{Binding ShowModuleCommand}"
                     CommandParameter="B">
-                Show B
+                Add B
             </Button>
         </StackPanel>
         
